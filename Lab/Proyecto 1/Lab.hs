@@ -1,4 +1,3 @@
-{-# LANGUAGE NPlusKPatterns #-}
 
 -- Ejercicio 1
 
@@ -30,6 +29,44 @@ sumatoria :: [Int] -> Int
 sumatoria [] = 0
 sumatoria (x:xs) = x + sumatoria xs
 
-existe :: [Bool] -> Bool
-existe [] = False
-existe (x:xs) = (x == True) || existe xs
+productoria :: [Int] -> Int
+productoria [] = 1
+productoria (x:xs) = x * productoria xs
+
+factorial :: Int -> Int
+factorial 0 = 1
+factorial x = x * factorial (x-1)
+
+promedio :: [Int] -> Int
+promedio xs = sumatoria xs `div` (length xs)
+
+
+-- Ejercicio 3
+
+pertenece :: Int -> [Int] -> Bool
+pertenece n [] = False
+pertenece n (x:xs) = (n == x) || pertenece n xs
+
+
+-- Ejercicio 4 
+
+paratodo' :: [a] -> (a -> Bool) -> Bool
+paratodo' [] _ = True
+paratodo' (x:xs) t = (t x) && paratodo' xs t
+
+existe' :: [a] -> (a -> Bool) -> Bool
+existe' [] _  = False
+existe' (x:xs) t = (t x) || existe' xs t
+
+sumatoria' :: [a] -> (a -> Int) -> Int
+sumatoria' [] _ = 0
+sumatoria' (x:xs) t = t x + sumatoria' xs t
+
+productoria' :: [a] -> (a -> Int) -> Int
+productoria' [] _ = 1
+productoria' (x:xs) t = t x * productoria' xs t
+
+
+-- Ejercicio 5
+paratodo'' :: [Bool] -> Bool
+paratodo'' xs =  paratodo' xs (id)
