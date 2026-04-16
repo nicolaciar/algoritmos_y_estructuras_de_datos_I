@@ -68,5 +68,34 @@ productoria' (x:xs) t = t x * productoria' xs t
 
 
 -- Ejercicio 5
+
 paratodo'' :: [Bool] -> Bool
 paratodo'' xs =  paratodo' xs (id)
+
+
+-- Ejercicio 6
+
+-- Funciones auxiliares
+esPar :: Int -> Bool
+esPar x = (x `mod` 2 == 0)
+
+esMultiplo :: Int -> Int -> Bool
+esMultiplo n m = (m `mod` n == 0)
+
+divideA :: Int -> Int -> Bool
+divideA n m = (n `mod` m == 0);
+
+cuadrado :: Int -> Int
+cuadrado x = x*x
+
+todosPares :: [Int] -> Bool
+todosPares xs = paratodo' xs esPar
+
+hayMultiplo :: Int -> [Int] -> Bool
+hayMultiplo n xs = existe' xs (esMultiplo n)                -- Aplicación parcial!
+
+sumaCuadrados :: Int -> Int
+sumaCuadrados n = sumatoria' [1..n] cuadrado
+
+existeDivisor :: Int -> [Int] -> Bool
+existeDivisor n xs = existe' xs (divideA n)
