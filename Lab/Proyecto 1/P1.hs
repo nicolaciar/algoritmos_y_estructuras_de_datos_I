@@ -73,9 +73,9 @@ paratodo'' :: [Bool] -> Bool
 paratodo'' xs =  paratodo' xs (id)
 
 
--- Ejercicio 6
 
--- Funciones auxiliares
+-- Funciones auxiliares para ej 6
+
 esPar :: Int -> Bool
 esPar x = (x `mod` 2 == 0)
 
@@ -88,6 +88,14 @@ divideA n m = (n `mod` m == 0);
 cuadrado :: Int -> Int
 cuadrado x = x*x
 
+soloPrimos :: [Int] -> [Int]
+soloPrimos [] = []
+soloPrimos (x:xs) | esPrimo x = x:soloPrimos xs
+                  | not (esPrimo x) = soloPrimos xs 
+
+
+-- Ejercicio 6
+
 todosPares :: [Int] -> Bool
 todosPares xs = paratodo' xs esPar
 
@@ -99,3 +107,55 @@ sumaCuadrados n = sumatoria' [1..n] cuadrado
 
 existeDivisor :: Int -> [Int] -> Bool
 existeDivisor n xs = existe' xs (divideA n)
+
+esPrimo :: Int -> Bool
+esPrimo n = not (existeDivisor n [2..n-1])
+
+factorial' :: Int -> Int
+factorial' n = productoria' [1..n] id
+
+multiplicaPrimos :: [Int] -> Int
+multiplicaPrimos xs = productoria' (soloPrimos xs) id
+
+
+-- Ejercicio 7
+
+-- map representa la aplicación de una transformación uniforme sobre una estructura
+map' :: (a -> b) -> [a] -> [b]
+map' _ []     = []
+map' f (x:xs) = f x : map' f xs
+
+--filter decide que elementos permanecen en la estructura basándose en un predicado
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' _ []     = []
+filter' p (x:xs) | p x       = x : filter' p xs
+                 | otherwise = filter' p xs
+
+-- map succ [1, -4, 6, 2, -8] = [2, -3, 7, 3, -7] (aplica succ n = n+1 a cada elemento de la lista)
+
+-- filter esPositivo [1, -4, 6, 2, -8] = [1, 6, 2] (aplica esPositivo Int -> Bool a cada elemento, descarta los que devuelven False)
+
+
+-- Ejercicio 8
+
+duplicaLista :: [Int] -> [Int]
+duplicaLista [] = []
+duplicaLista (x:xs) = (2*x):(duplicaLista xs)
+
+duplicaLista' :: [Int] -> [Int]
+duplicaLista' xs = map (*2) xs
+
+
+-- Ejercicio 9
+
+--- es la funcion auxiliar soloPrimos del el ejercicio 6
+
+soloPrimos' :: [Int] -> [Int]
+soloPrimos' [] = []
+soloPrimos' (x:xs) = filter (esPrimo) xs
+
+-- Ejercicio 10
+
+primIgualesA :: Int -> [Int] -> [Int]
+primIgualesA n [] = []
+primIgualesA n (x:xs) =  
