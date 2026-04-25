@@ -156,6 +156,33 @@ soloPrimos' (x:xs) = filter (esPrimo) xs
 
 -- Ejercicio 10
 
-primIgualesA :: Int -> [Int] -> [Int]
-primIgualesA n [] = []
-primIgualesA n (x:xs) =  
+primIgualesA :: Eq a => a -> [a] -> [a]
+primIgualesA v [] = []
+primIgualesA v (x:xs) | (v==x) = x:(primIgualesA v xs)
+                      | otherwise = []                   -- salida de la recursion hacia el caso base
+
+-- Sobre takeWhile
+
+takeWhile' :: (a -> Bool) -> [a] -> [a]
+takeWhile' _ [] = []                                      -- Si no hay elementos, no hay nada que tomar
+takeWhile' p (x:xs) | p x       = x : takeWhile' p xs     -- Si cumple p, lo incluyo y sigo
+                    | otherwise = []                      -- Si no cumple, corto la ejecución
+
+primIgualesA' :: Eq a => a -> [a] -> [a]
+primIgualesA' v xs = takeWhile (==v) xs
+
+
+-- Ejercicio 11
+
+primIguales :: Eq a => [a] -> [a]
+primIguales [] = []
+primIguales [x] = [x]
+primIguales (x:y:xs) | (x==y) = x:(primIguales (y:xs))
+                     | otherwise = [x]
+
+primIguales' :: Eq a => [a] -> [a]
+primIguales' (x:xs) | (x:xs) == [] = []
+                    | otherwise = primIgualesA x (x:xs)
+
+
+
