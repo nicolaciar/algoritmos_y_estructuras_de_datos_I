@@ -17,10 +17,16 @@ int main () {
 	bool exp2 = (x+y == 0 && y - x == (-1) * z);
 	bool exp3 = (!b && w);
 	
-	// resultados:
+	// estado inicial:
+	printf("Estado inicial:\n");
+	printf("x -> %d, y -> %d, z -> %d", x, y, z); 
+	printf(", b -> %s", b ? "true" : "false");
+	printf(", w -> %s\n", w ? "true" : "false");
+	
+	// resultados
 	printf("x%%4 == 0 es -> %s\n", exp1 ? "true" : "false");
 	printf("x+y == 0 && y - x == (-1) * z es -> %s\n", exp2 ? "true" : "false");
-	printf("not b && w es -> %s", exp3 ? "true" : "false");
+	printf("not b && w es -> %s\n", exp3 ? "true" : "false");
 	
 	return 0;
 	
