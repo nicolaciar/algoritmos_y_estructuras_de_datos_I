@@ -140,8 +140,8 @@ longitud :: [a] -> Int
 longitud [] = 0
 longitud (x:xs) = 1 + longitud xs
 
-promedio :: [Int] -> Int
-promedio xs = sumatoria xs `div` (longitud xs) -- div sumatoria xs longitud xs
+promedio :: [Int] -> Int              -- x:xs para no dividir por 0
+promedio x:xs = sumatoria x:xs `div` (longitud x:xs) -- div sumatoria xs longitud xs
 
 -- Ejercicio 5
 
