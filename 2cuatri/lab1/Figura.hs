@@ -1,3 +1,5 @@
+module Figuras where
+
 -- Ejercicio 4, 5 y 6 -  Laboratorio 0
 
 data Color = Rojo | Amarillo | Azul | Verde deriving (Show, Eq)
