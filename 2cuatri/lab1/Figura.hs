@@ -1,4 +1,4 @@
-module Figuras where
+module Figura where
 
 -- Ejercicio 4, 5 y 6 -  Laboratorio 0
 
