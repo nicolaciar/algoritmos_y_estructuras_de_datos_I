@@ -82,7 +82,7 @@ f5a x = x * f5a (x-1)
 f5b :: Fractional a => [Int] -> a
 f5b (x:xs) = fromIntegral (sumatoria xs) / fromIntegral (longitud xs)
 
--- b) Variables libres: xs :: [Int], ys :: [Int]
+-- c) Variables libres: xs :: [Int], ys :: [Int]
 -- funciones auxiliares
 maximo :: [Int] -> Int
 maximo [x] = x
@@ -94,3 +94,113 @@ minimo (x:xs) = min x (minimo xs)
 
 f5c :: [Int] -> [Int] -> Bool
 f5c xs ys = maximo xs < minimo ys
+
+-- Ejercicio 6
+
+-- b) n :: Int, xs :: [Int]
+esMaxDe :: Int -> [Int] -> Bool
+esMaxDe n xs = n == maximo xs
+ 
+-- c) xs :: [Int]
+prodPares :: [Int] -> Int
+prodPares [] = 1
+prodPares (x:xs) | (x `mod` 2 == 0) = x * prodPares xs
+                 | otherwise = prodPares xs
+
+-- d) xs :: [Int]
+sumaPosPar :: [Int] -> Int
+sumaPosPar xs = sumaPosParAux xs 0
+
+sumaPosParAux :: [Int] -> Int -> Int
+sumaPosParAux [] _ = 0
+sumaPosParAux (x:xs) i | even i = x + sumaPosParAux xs (i+1)
+                       | otherwise = sumaPosParAux xs (i+1)
+
+
+
+-- Ejercicio 7
+
+data Carrera  = Matematica | Fisica | Computacion | Astronomia
+
+-- a)
+titulo :: Carrera -> String
+titulo Matematica = "Licenciatura en Matemática"
+titulo Fisica = "Licenciatura en Física"
+titulo Computacion = "Licenciatura en Computación"
+titulo Astronomia = "Licenciatura en Astronomía"
+
+-- b)
+data NotaBasica = Do | Re | Mi | Fa | Sol | La | Si 
+    deriving (Eq, Ord, Show) -- Ejercicio 8
+
+-- d)
+
+cifradoAmericano :: NotaBasica -> Char
+cifradoAmericano Do = 'C'
+cifradoAmericano Re = 'D'
+cifradoAmericano Mi = 'E'
+cifradoAmericano Fa = 'F'
+cifradoAmericano Sol = 'G'
+cifradoAmericano La = 'A'
+cifradoAmericano Si = 'B'
+
+
+-- Ejercicio 9
+
+-- a)
+minimoElemento :: Ord a => [a] -> a
+minimoElemento [x] = x
+minimoElemento (x:xs) = min x (minimoElemento xs)
+
+-- b)
+minimoElemento' :: (Ord a, Bounded a) => [a] -> a
+minimoElemento' [] = maxBound
+minimoElemento' (x:xs) = min x (minimoElemento' xs)
+
+-- c)
+xsn = [Fa, La, Sol, Re, Fa] -- minimoElemento xsn -> Re
+
+
+-- Ejercicio 10
+
+-- a)
+-- Sinonimos de tipo
+type Altura = Int
+type NumCamiseta = Int
+
+-- Tipos algebráicos sin parámetros (aka enumerados)
+data Zona = Arco | Defensa | Mediocampo | Delantera
+data TipoReves = DosManos | UnaMano
+data Modalidad = Carretera | Pista | Monte | BMI
+data PiernaHabil = Izquierda | Derecha
+-- Sinonimo
+type ManoHabil = PiernaHabil
+
+data Deportista = Ajedrecista
+                | Ciclista Modalidad
+                | Velocista Altura
+                | Tenista TipoReves ManoHabil Altura
+                | Futbolista Zona NumCamiseta PiernaHabil Altura
+
+-- b) Ciclista :: Deportista
+
+-- c)
+contarVelocistas :: [Deportista] -> Int
+contarVelocistas [] = 0
+contarVelocistas (Velocista _:xs) = 1 + contarVelocistas xs
+contarVelocistas (_:xs) = contarVelocistas xs
+
+
+-- d) 
+
+contarFutbolistas :: [Deportista] -> Zona -> Int
+contarFutbolistas xs zona = length (filter esDeZona xs)
+  where
+    esDeZona (Futbolista z _ _ _) = case (z, zona) of
+      (Arco, Arco)             -> True
+      (Defensa, Defensa)       -> True
+      (Mediocampo, Mediocampo) -> True
+      (Delantera, Delantera)   -> True
+      _                        -> False
+    esDeZona _ = False
+
