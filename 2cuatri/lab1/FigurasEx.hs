@@ -1,3 +1,7 @@
+module FigurasEx where
+
+import Figura
+
 -- Todas las figuras son rojas
 xs1 :: [Figura]
 xs1 = [(Circulo, Rojo, 4), (Cuadrado, Rojo, 10), (Triangulo, Rojo, 7)]
