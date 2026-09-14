@@ -13,9 +13,9 @@ iga e [] = True
 iga e (x:xs) = x == e && iga e xs
 
 -- c)
-exp1 :: (Num a) => a -> Int -> a
-exp1 _ 0 = 1
-exp1 x n = x * exp1 x (n-1)
+exp' :: (Num a) => a -> Int -> a
+exp' _ 0 = 1
+exp' x n = x * exp' x (n-1)
 
 -- d)
 -- funcion aux
@@ -39,17 +39,28 @@ cuantos p (x:xs) | p x = 1 + cuantos p xs
 -- a)
 sumPot :: Num a => a -> Int -> a
 sumPot x 0 = 0
-sumPot x n = exp1 x n + sumPot x (n-1)
+sumPot x n = exp' x (n-1) + sumPot x (n-1)
 
--- b) FALTA DERIVAR
+-- b)
+piAux :: (Fractional a, Integral b) => b -> a
+piAux 0 = 0
+piAux n = piAux (n - 1) + exp' (-1) (n - 1) / fromIntegral (2 * (n - 1) + 1)
+
+pi' :: (Fractional a, Integral b) => b -> a
+pi' n = 4 * piAux n
 
 -- c)
-cubo :: Int -> Int
-cubo 0 = 0
-cubo (x+1) = cubo x + 3 * (exp1 x 2) + 3*x + 1
+f :: Int -> Int
+f 0 = 0
+f x = f (x-1) + g (x-1)
 
--- d) FALTA DERIVAR
+g :: Int -> Int
+g 0 = 1
+g x = g (x-1) + h (x-1)
 
+h :: Int -> Int
+h 0 = 6
+h x = h (x-1) + 6
 
 -- Ejercicio 3
 --a)
@@ -89,11 +100,11 @@ psum xs = gpsum 0 xs
 -- Correción Ejercicio 6 c) cuenta :: Cola -> Zona -> Deportista cuenta los deportistas de Zona que hay en la lista
 
 -- Ejercicio 6
-data Cola = VaciaC | Encolada Deportista Cola
+--data Cola = VaciaC | Encolada Deportista Cola
 
 -- a) 
-atender :: Cola -> Cola
-atender (Encolada d r) = r
+--atender :: Cola -> Cola
+--atender (Encolada d r) = r
 
 -- b)
 --encolar :: Deportista -> Cola -> Cola
@@ -167,7 +178,7 @@ type Anio = Int
 type Duracion = Int
 
 data Lanzamiento = Album Nombre Artista Temas Anio
-                 | Sencillo Nombre Artista Duracion Anio
+                 | Sencillo Nombre Artista Duracion Anio deriving Show
 
 -- b)
 clicsModernos :: Lanzamiento
@@ -198,7 +209,7 @@ minSencillosArtista (Sencillo _ a' d _:xs) a | a == a' = div d 60 + minSencillos
 minSencillosArtista (_:xs) a = minSencillosArtista xs a
 
 -- f)
-data ColaLanzamiento = Vacia | Encolada Lanzamiento ColaLanzamiento deriving Show
+data ColaLanzamiento = Vacia | Encolada Lanzamiento ColaLanzamiento 
 
 soloSencillos :: ColaLanzamiento -> ColaLanzamiento
 soloSencillos Vacia = Vacia
