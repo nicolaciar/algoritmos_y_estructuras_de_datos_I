@@ -14,5 +14,5 @@ int main() {
         printf("σ1: i -> %d\n", i);
     }
     // Estado final
-    printf("σ3: i -> %d\n", i);
+    printf("σ2: i -> %d\n", i);
 }
