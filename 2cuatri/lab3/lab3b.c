@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+// Prgorama 1b
 int main () {
 	int x, y;
 	printf("Estado inicial:\nx -> ");

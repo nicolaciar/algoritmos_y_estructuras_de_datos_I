@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+// Programa 1c
 int main () {
 	int x, y;
 	printf("Estado inicial:\nx -> ");

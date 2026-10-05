@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+// Programa 3a
 int main () {
 	int x, y;
 	
@@ -17,6 +17,4 @@ int main () {
 	
 	// estado final
 	printf("Estado final:\nx -> %d, y -> %d\n", x, y);
-	
-
 }
