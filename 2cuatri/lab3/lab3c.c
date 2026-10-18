@@ -9,4 +9,6 @@ int main (void) {
 	y = y + y;
 	x = x + y;
 	printf("Estado final:\nx -> %d, y -> %d\n", x, y);
+
+    return 0;
 }

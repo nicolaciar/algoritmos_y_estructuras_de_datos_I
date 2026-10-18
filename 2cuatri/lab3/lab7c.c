@@ -1,6 +1,6 @@
 #include <stdio.h>
 // programa 5c
-int main () {
+int main (void) {
     // declaración de variable
     int i;
     printf("i -> ");
@@ -15,4 +15,6 @@ int main () {
     }
     // estado final
     printf("σ2: i -> %d\n", i);
+
+    return 0;
 }

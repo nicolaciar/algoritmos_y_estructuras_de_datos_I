@@ -23,5 +23,6 @@ int main (void) {
 	printf("x%%4 == 0 -> %d\n", exp1);
 	printf("x+y == 0 && y - x == (-1) * z -> %d\n", exp2);
 	printf("not b && w -> %d\n", exp3);
+
 	return 0;
 }

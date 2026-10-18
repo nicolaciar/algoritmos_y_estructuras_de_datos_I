@@ -18,5 +18,6 @@ int main (void) {
 	printf("y - 2 == (x*3+1) %% 5 = %d\n", y - 2 == (x*3+1)%5);
 	printf("y/2*x = %d\n", y/2*x);
 	printf("y < x*z = %d\n", y < x*z);
+
 	return 0;
 }

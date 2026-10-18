@@ -1,6 +1,6 @@
 #include <stdio.h>
 // Programa 5b
-int main () {
+int main (void) {
     // decalaración de variables
     int i;
     printf("i -> ");
@@ -15,4 +15,6 @@ int main () {
     }
     // estado final
     printf("σ2: i -> %d\n", i);
+
+    return 0;
 }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 // programa 8a
-int main () {
+int main (void) {
 	//declaración de variables
 	int i, s;
 	// estado inicial
@@ -23,4 +23,6 @@ int main () {
 	}
 	// estado final
 	printf("σ3: i -> %d, s -> %d\n", i, s);
+
+    return 0;
 }
