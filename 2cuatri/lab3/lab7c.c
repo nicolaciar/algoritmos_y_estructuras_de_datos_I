@@ -3,15 +3,16 @@
 int main () {
     // declaración de variable
     int i;
-    // estado inicial
-    printf("estado inicial: i -> ");
+    printf("i -> ");
     scanf("%d",&i);
+    // estado inicial
+    printf("σ0: i -> %d\n", i);
     // sentencia de repetición
     while (i < 0) {
         i = i - 1;
         // estado intermedio
-        printf("i -> %d\n", i);
+        printf("σ1: i -> %d\n", i);
     }
     // estado final
-    printf("estado final: i -> %d\n", i);
+    printf("σ2: i -> %d\n", i);
 }

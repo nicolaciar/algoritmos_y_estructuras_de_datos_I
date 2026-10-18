@@ -3,15 +3,16 @@
 int main () {
     // decalaración de variables
     int i;
-    // estado inicial
-    printf("Ingrese estado inicial:\ni -> ");
+    printf("i -> ");
     scanf("%d", &i);
+    // estado inicial
+    printf("σ0: i -> %d\n", i);
     // sentencia de repetición
     while (i!=0) {
         i = 0;
-        // estado intermedio
-        printf("i -> %d\n", i);
+        // estados intermedios
+        printf("σ1: i -> %d\n", i);
     }
     // estado final
-    printf("Estado final: i -> %d\n",i);
+    printf("σ2: i -> %d\n", i);
 }
