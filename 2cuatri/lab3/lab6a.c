@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main () {
+int main (void) {
     // Declaración de variables
     int x,y,z,m;
     // Pregunto por estado inicial
@@ -32,6 +32,8 @@ int main () {
     }
     // estado final
     printf("σ2: x->%d, y->%d, z->%d, m->%d\n",x,y,z,m); 
+
+    return 0;
 }
 
 // este programa asigna a m, el mayor de tres valores x, y, z

@@ -4,7 +4,7 @@ x,y,z, e imprima el resultado de las siguiente expresiones. Completá los result
 
 #include <stdio.h>
 
-int main () {
+int main (void) {
 	int x, y,z;
 	printf("Ingrese valor de x: ");
 	scanf("%d", &x);

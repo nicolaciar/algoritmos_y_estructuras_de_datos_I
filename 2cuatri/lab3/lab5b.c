@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main () {
+int main (void) {
     // Declaración de variables
     int x,y;
     // Pregunto por estado inicial
@@ -16,4 +16,6 @@ int main () {
         x = 2;        
     }
     printf("Estados final:\nx -> %d, y -> %d\n",x,y);
+	
+    return 0;
 }

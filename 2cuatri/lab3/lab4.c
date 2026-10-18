@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-int main () {
+int main (void) {
 	// variables del programa
 	int x, y, aux;             // usamos aux para implementar la asignación multpple
 	// preguntamos por el estado inicial

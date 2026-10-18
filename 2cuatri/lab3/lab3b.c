@@ -1,6 +1,6 @@
 #include <stdio.h>
 // Prgorama 1b
-int main () {
+int main (void) {
 	int x, y;
 	printf("Estado inicial:\nx -> ");
 	scanf("%d", &x);

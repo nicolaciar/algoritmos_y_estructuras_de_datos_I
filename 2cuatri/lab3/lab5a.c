@@ -1,6 +1,6 @@
 #include <stdio.h>
 // Programa 3a
-int main () {
+int main (void) {
 	int x, y;
 	
 	// estado inicial
@@ -17,4 +17,5 @@ int main () {
 	
 	// estado final
 	printf("Estado final:\nx -> %d, y -> %d\n", x, y);
+	return 0;
 }

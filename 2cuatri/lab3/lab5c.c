@@ -1,6 +1,6 @@
 #include <stdio.h>
 //Programa 3c
-int main () {
+int main (void) {
     // Declaración de variables
     int x, y;
     // Pido por estado inicial
@@ -17,4 +17,6 @@ int main () {
     }
     // estado final
     printf("Estado final:\nx -> %d, y -> %d\n",x,y);
+
+    return 0;
 }
